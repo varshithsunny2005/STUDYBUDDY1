@@ -1,0 +1,41 @@
+/api_example.html
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django database
+db.sqlite3
+
+# Django collectstatic (but keep development static files)
+staticfiles/
+static/admin/
+static/rest_framework/
+
+# Allow custom static files to be tracked
+!static/js/
+!static/css/
+!static/images/
+
+# Media files (if used)
+media/
+
+# Environment variables
+.env
+
+# Python virtual environments
+env/
+venv/
+.venv/
+
+# VSCode settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Logs
+*.log

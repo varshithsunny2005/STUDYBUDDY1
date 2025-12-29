@@ -1,0 +1,26 @@
+🧠 What will happen tomorrow (no worries)
+
+When you come back:
+
+Open VS Code
+
+Open project buddy
+
+Open terminal
+
+Go to studybud folder:
+
+cd studybud
+
+
+Activate venv:
+
+.\.venv\Scripts\activate
+
+
+Run server:
+
+python manage.py runserver
+
+
+Your project will start exactly where you left it.

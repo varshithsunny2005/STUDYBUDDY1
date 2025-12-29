@@ -1,0 +1,156 @@
+<!-- filepath: d:\StudyBuddy\studybud\base\templates\base\topics.html -->
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+<main class="create-room layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{% url 'home' %}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <title>arrow-left</title>
+              <path
+                d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"
+              ></path>
+            </svg>
+          </a>
+          <h3>Browse Topics</h3>
+        </div>
+      </div>
+
+      <div class="topics-page layout__body">
+        
+        <!-- Search Form -->
+        <form action="" method="GET" class="header__search">
+          <label>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <title>search</title>
+              <path
+                d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
+              ></path>
+            </svg>
+            <input type="text"
+              name="q" 
+              placeholder="Search for topics" 
+              value="{{ search_query }}"  <!--  Preserve search query -->
+            />
+          </label>
+        </form>
+
+        <!-- Search Results Header -->
+        {% if search_query %}
+          <div class="search-results-header">
+            <p>
+              Showing results for "<strong>{{ search_query }}</strong>" 
+              ({{ topic_count }} topic{{ topic_count|pluralize }} found)
+            </p>
+            <a href="{% url 'topics' %}" class="clear-search">Clear search</a>
+          </div>
+        {% endif %}
+
+        <!-- Topics List -->
+        <ul class="topics__list">
+          
+          <!-- "All Topics" Link -->
+          <li>
+            <a href="{% url 'topics' %}" class="{% if not search_query %}active{% endif %}">
+              All 
+              <span>{{ topic_count }}</span>  <!--  Use topic_count from context -->
+            </a>
+          </li>
+          
+          <!-- Individual Topics -->
+          {% for topic in topics %}
+          <li>
+            <a href="{% url 'home' %}?q={{ topic.name }}">
+              {{ topic.name }} 
+              <span>{{ topic.room_count }}</span>  <!--  FIXED: Use annotated room_count (no query!) -->
+            </a>
+          </li>
+          {% empty %}
+            <!-- Empty State (when search returns no results) -->
+            <li class="no-results">
+              <p>No topics found{% if search_query %} matching "{{ search_query }}"{% endif %}.</p>
+              {% if search_query %}
+                <a href="{% url 'topics' %}">View all topics</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<style>
+/* Search Results Header Styles */
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.search-results-header p {
+  margin: 0;
+  color: #333;
+}
+
+.clear-search {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.clear-search:hover {
+  text-decoration: underline;
+}
+
+/* No Results State */
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #7c8a95;
+}
+
+.no-results p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.no-results a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.no-results a:hover {
+  text-decoration: underline;
+}
+
+/* Active Topic Highlight */
+.topics__list li a.active {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Room Count Badge */
+.topics__list li a span {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+</style>
+
+<script src="script.js"></script>
+
+{% endblock %}

@@ -1,0 +1,156 @@
+/* Enhanced Offline Status Indicators */
+
+/* Network status bar */
+.network-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.network-status.online {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.network-status.offline {
+  background-color: #FF9800;
+  color: white;
+}
+
+/* Message sync status indicators */
+.sync-status {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 12px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.sync-status.pending {
+  color: #FF9800;
+  animation: pulse 1.5s infinite;
+}
+
+.sync-status.synced {
+  color: #4CAF50;
+  animation: fadeInOut 2s ease;
+}
+
+.sync-status.failed {
+  color: #f44336;
+  cursor: help;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Message status styling */
+.thread[data-status="pending"] {
+  opacity: 0.8;
+  border-left: 3px solid #FF9800;
+}
+
+.thread[data-status="synced"] {
+  opacity: 1;
+  border-left: 3px solid transparent;
+  transition: border-left 0.3s ease;
+}
+
+.thread[data-status="failed"] {
+  opacity: 0.7;
+  border-left: 3px solid #f44336;
+}
+
+/* Offline indicator badge */
+.offline-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #FF9800;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Loading states */
+.sync-loading {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Debug panel (when #debug is in URL) */
+.debug-panel {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 11px;
+  max-width: 300px;
+  z-index: 1001;
+}
+
+.debug-panel h4 {
+  margin: 0 0 5px 0;
+  color: #4CAF50;
+}
+
+.debug-panel .stat {
+  margin: 2px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .network-status {
+    font-size: 12px;
+    padding: 8px;
+  }
+  
+  .offline-badge {
+    bottom: 10px;
+    right: 10px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  .debug-panel {
+    bottom: 10px;
+    left: 10px;
+    font-size: 10px;
+    max-width: 250px;
+  }
+}

@@ -1,0 +1,104 @@
+<!-- filepath: d:\StudyBuddy\studybud\base\templates\base\delete.html -->
+
+{% extends 'main.html' %}
+
+{% block content %}
+<main class="delete-item layout">
+    <div class="container">
+        <div class="layout__box">
+            <div class="layout__boxHeader">
+                <div class="layout__boxTitle">
+                    <!-- Dynamic back URL based on object type -->
+                    {% if type == 'room' %}
+                        <a href="{% url 'room' obj.id %}">
+                    {% elif type == 'message' %}
+                        <a href="{% url 'room' obj.room.id %}">
+                    {% else %}
+                        <a href="{% url 'home' %}">
+                    {% endif %}
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                            <title>arrow-left</title>
+                            <path d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"></path>
+                        </svg>
+                    </a>
+                    <h3>Back</h3>
+                </div>
+            </div>
+            
+            <div class="layout__body">
+                <!-- ✅ EXPLICIT ACTION URL -->
+                <form class="form" method="POST" 
+                    {% if type == 'room' %}
+                        action="{% url 'delete-room' obj.id %}"
+                    {% elif type == 'message' %}
+                        action="{% url 'delete-message' obj.id %}"
+                    {% else %}
+                        action=""
+                    {% endif %}
+                >
+                    {% csrf_token %}
+                    
+                    <div class="form__group">
+                        <!-- Display warning with object type -->
+                        {% if type == 'room' %}
+                            <p>Are you sure you want to delete the room <strong>"{{ obj.name }}"</strong>?</p>
+                            <p class="warning-text">⚠️ This will delete all messages in this room!</p>
+                        {% elif type == 'message' %}
+                            <p>Are you sure you want to delete this message?</p>
+                            <blockquote>{{ obj.body|truncatewords:20 }}</blockquote>
+                        {% else %}
+                            <p>Are you sure you want to delete "{{ obj }}"?</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="form__group form__action">
+                        <!-- Cancel button -->
+                        {% if type == 'room' %}
+                            <a href="{% url 'room' obj.id %}" class="btn btn--dark">Cancel</a>
+                        {% elif type == 'message' %}
+                            <a href="{% url 'room' obj.room.id %}" class="btn btn--dark">Cancel</a>
+                        {% else %}
+                            <a href="{% url 'home' %}" class="btn btn--dark">Cancel</a>
+                        {% endif %}
+                        
+                        <!-- Confirm delete button -->
+                        <input class="btn btn--main btn--danger" type="submit" value="Delete Forever" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+.warning-text {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+blockquote {
+    background: #f5f5f5;
+    padding: 10px;
+    border-left: 3px solid #3498db;
+    margin: 10px 0;
+    font-style: italic;
+}
+
+.form__action {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn--danger {
+    background-color: #e74c3c !important;
+}
+
+.btn--danger:hover {
+    background-color: #c0392b !important;
+}
+</style>
+
+{% endblock %}
