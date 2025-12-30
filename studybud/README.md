@@ -165,6 +165,6 @@ Live Demo: [https://studybuddy-stdl.onrender.com](https://studybuddy-stdl.onrend
 
 ---
 ##  Author
-**Sitra Vishnu Bhargav**  
+**Pogula Varshith Goud **  
 Final-year CSE, IIIT Jabalpur  
-[GitHub](https://github.com/Bhargavzz) • [LinkedIn](https://linkedin.com/in/bhargavzz)
+[GitHub](https://github.com/varshithsunny2005/STUDYBUDDY1) • [LinkedIn](https://www.linkedin.com/in/varshith-goud-43968b317/)
