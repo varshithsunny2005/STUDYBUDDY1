@@ -168,3 +168,6 @@ Live Demo: [https://studybuddy-stdl.onrender.com](https://studybuddy-stdl.onrend
 Pogula Varshith Goud 
 Final-year CSE, IIIT Jabalpur  
 [GitHub](https://github.com/varshithsunny2005/STUDYBUDDY1) • [LinkedIn](https://www.linkedin.com/in/varshith-goud-43968b317/)
+
+## Project Buddy
+A real-time collaborative study platform built with Django and Supabase.
