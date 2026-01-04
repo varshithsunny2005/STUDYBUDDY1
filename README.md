@@ -1,35 +1,33 @@
-# StudyBuddy
+## StudyBuddy
 
 
-[![Live Demo – Render](https://img.shields.io/badge/Live%20Demo-StudyBuddy-green?style=flat&logo=render)](https://studybuddy-stdl.onrender.com)
 
-StudyBuddy is a full-stack, real-time collaborative web application that enables students to create and participate in topic-based study rooms.
-Built with Django and Supabase, it supports live group messaging, dynamic participant tracking, and avatar-based user profiles. The platform leverages Supabase Realtime for instant message delivery, Supabase Storage for media management, and PostgreSQL for scalable data handling — all within a modern, responsive, and secure user interface.
-
----
-
-
-##  Key Features
-
-- **User Authentication**: Register, login, and manage your profile.
-- **Profile Avatars**: Upload avatars (stored on Supabase Storage) with robust default/fallback handling.
-- **Study Rooms**: Create, join, and participate in themed study rooms.
-- **Real-Time Chat**: Instant messaging in rooms using Supabase Realtime.
-- **Live Participants List**: See who is currently in each room, updated in real time.
-- **Topic Browsing**: Discover and filter rooms by topics.
-- **Recent Activities Feed**: View the latest messages and activities across the platform.
-- **Responsive UI**: Clean, modern interface with mobile support.
-- **Secure**: CSRF protection, permission checks, and no sensitive data in logs.
+StudyBuddy is a full-stack, real-time collaborative web application that enables students to create and participate in topic-based study rooms.  
+Built with **Django** and **Supabase**, it supports live group messaging, dynamic participant tracking, and avatar-based user profiles. The platform leverages **Supabase Realtime** for instant messaging, **Supabase Storage** for media management, and **PostgreSQL** for scalable data handling — all within a secure and responsive interface.
 
 ---
 
-##  Technologies Used
+## ✨ Key Features
+
+- User authentication (register, login, profile management)
+- Avatar-based user profiles with fallback handling
+- Create and join topic-based study rooms
+- Real-time chat using Supabase Realtime
+- Live participant tracking in rooms
+- Topic discovery and filtering
+- Recent activity feed
+- Responsive UI with mobile support
+- Secure implementation with CSRF protection and permission checks
+
+---
+
+## 🛠️ Technologies Used
 
 - **Backend**: Django 4.x, Django REST Framework
 - **Frontend**: Django Templates, HTML, CSS, JavaScript
 - **Database & Storage**: Supabase (Postgres, Storage, Realtime)
 - **Static Files**: WhiteNoise
-- **Deployment**: Render.com
+- **Deployment**: Render
 - **Other**: python-dotenv, Gunicorn, CORS Headers
 
 ---
@@ -38,8 +36,8 @@ Built with Django and Supabase, it supports live group messaging, dynamic partic
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Bhargavzz/StudyBuddy.git
-   cd StudyBuddy/studybud
+   git clone https://github.com/varshithsunny2005/STUDYBUDDY1.git
+   cd STUDYBUDDY1
    ```
 
 2. **Create and activate a virtual environment:**
